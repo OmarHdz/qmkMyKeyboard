@@ -1,0 +1,25 @@
+$ Home Keyboard DactylManuform
+qmk_firmware/keyboards/handwired/dactyl_manuform/5x6
+
+# El teclado que llame principal tiene las teclas para blender
+$HOME/qmk_firmware/keyboards/handwired/dactyl_manuform/5x6
+qmk_firmware/keyboards/handwired/dactyl_manuform/5x6/keymaps/principal
+
+# Cambiar Mano Principal
+ cat qmk_firmware/keyboards/handwired/dactyl_manuform/5x6/keymaps/principal/config.h
+ 
+# Cambiar que hace Cada Tecla
+ cat qmk_firmware/keyboards/handwired/dactyl_manuform/5x6/keymaps/principal/keymap.c
+
+# Prepara json para obtener el pdf, aplicar sobre keymap.c
+map <SPACE>z /PROGMEM<cr>jda{<cr>gg<cr>p<cr>/}<cr>j<cr>dGgg<cr>:g/--/d<cr>:g//d<cr>:%s/^  \[.*/\["/g<cr>:%s/^  )/  "]/g<cr>:%s/ //g<cr>:%s/,/","/g<cr>:%s/\n//g<cr>:%s/\]","/\],\r/g<cr>:%s/{/\[\r/g<cr>:%s/}/\r\]<cr>
+
+# Insertar json
+https://config.qmk.fm/#/print
+
+# Todos los teclados de qmk
+ls qmk_firmware/keyboards/
+
+# Comandos para compilar y flashear el teclado, -kb es de keyboard y -km es de keymap
+qmk compile -kb handwired/dactyl_manuform/5x6 -km principal
+qmk flash -kb handwired/dactyl_manuform/5x6 -km principal
